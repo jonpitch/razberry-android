@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        // Butterknife and Parceler have conflicts
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
 }
 
 dependencies {
@@ -29,4 +33,5 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
     compile 'com.jakewharton:butterknife:6.0.0'
     compile 'com.github.castorflex.smoothprogressbar:library-circular:1.0.1'
+    compile 'org.parceler:parceler:0.2.15'
 }

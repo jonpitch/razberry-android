@@ -2,17 +2,19 @@ package com.jonpitch.razberry.devices;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Parcel;
-
-import com.google.gson.Gson;
 import com.jonpitch.razberry.api.RazberryApi;
 import com.jonpitch.razberry.api.RazberryService;
+
+import org.parceler.Parcel;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+@Parcel
 public class MultiLevelSwitch extends Device {
+
+    public MultiLevelSwitch() { }
 
     public MultiLevelSwitch(int id, String name, boolean isOn, int level) {
         super(id, name, isOn, level);
@@ -20,9 +22,6 @@ public class MultiLevelSwitch extends Device {
         setName(name);
         setIsOn(isOn);
         setLevel(level);
-
-        Gson gson = new Gson();
-        mSerializedDevice = gson.toJson(this);
     }
 
     public void on(Context context, Callback<Void> callback) {
@@ -71,33 +70,5 @@ public class MultiLevelSwitch extends Device {
             });
             return null;
         }
-    }
-
-    // parcelable
-
-    public static final Creator<MultiLevelSwitch> CREATOR = new Creator<MultiLevelSwitch>() {
-
-        @Override
-        public MultiLevelSwitch createFromParcel(Parcel parcel) {
-            return new MultiLevelSwitch(parcel);
-        }
-
-        @Override
-        public MultiLevelSwitch[] newArray(int size) {
-            return new MultiLevelSwitch[size];
-        }
-    };
-
-    public int describeContents() {
-        return 0;
-    }
-
-    public void writeToParcel(Parcel out, int flags) {
-        super.writeToParcel(out, flags);
-        out.writeString(mSerializedDevice);
-    }
-
-    private MultiLevelSwitch(Parcel in) {
-        super(in);
     }
 }

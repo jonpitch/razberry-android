@@ -2,6 +2,7 @@ package com.jonpitch.razberry.api;
 
 import android.content.Context;
 
+import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 
 public class RazberryApi {
@@ -18,6 +19,7 @@ public class RazberryApi {
         String host = "192.168.1.21";
 
         // configure service
+        // TODO can we configure Retrofit to URL Encode endpoints?
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("http://" + host + ":8083")
                 .build();

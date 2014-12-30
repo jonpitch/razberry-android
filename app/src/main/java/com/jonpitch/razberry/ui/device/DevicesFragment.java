@@ -81,14 +81,16 @@ public class DevicesFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new DeviceAdapter(parent, new ArrayList<Device>());
         mRecyclerView.setAdapter(mAdapter);
+    }
 
-        // update views
-        if (parent.model == null) {
-            DevicesTask task = new DevicesTask(parent);
-            task.execute();
-        } else {
-            draw();
-        }
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // always fetch current state of network
+        DevicesActivity parent = (DevicesActivity) getActivity();
+        DevicesTask task = new DevicesTask(parent);
+        task.execute();
     }
 
     /**

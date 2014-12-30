@@ -2,13 +2,19 @@
 <resources>
 
     <string name="app_name">Razberry</string>
+    <string name="title_activity_device">Device</string>
 
     <array name="progressColors">
         <item>@color/colorPrimaryDark</item>
         <item>@color/colorAccent</item>
     </array>
 
+    <!-- devices -->
+    <string name="binary_switch_on">On</string>
+    <string name="binary_switch_off">Off</string>
+
     <string name="no_devices_found">No devices found :-(</string>
     <string name="server_error">Something went wrong :-(</string>
+    <string name="communication_error">Could not communicate with device :-(</string>
 
 </resources>

@@ -21,7 +21,7 @@ public interface RazberryService {
      * @param toggle The toggle mode: 255 = on, 0 = off
      * @param callback The callback executed on success
      */
-    @POST("/ZWaveAPI/Run/devices[{id}].instances[0].SwitchBinary.Set({toggle})")
+    @POST("/ZWaveAPI/Run/devices%5B{id}%5D.instances%5B0%5D.SwitchBinary.Set({toggle})")
     void toggleBinarySwitch(
             @Path("id") int deviceId,
             @Path("toggle") int toggle,
@@ -34,7 +34,7 @@ public interface RazberryService {
      * @param level The level to set 0 = off, 100 = full on
      * @param callback The callback executed on success
      */
-    @POST("/ZWaveAPI/Run/devices[{id}].instances[0].SwitchMultilevel.Set({level})")
+    @POST("/ZWaveAPI/Run/devices%5B{id}%5D.instances%5B0%5D.SwitchMultilevel.Set({level})")
     void toggleMultiLevelSwitch(
             @Path("id") int deviceId,
             @Path("level") int level,

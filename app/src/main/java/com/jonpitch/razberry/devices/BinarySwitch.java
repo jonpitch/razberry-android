@@ -2,17 +2,19 @@ package com.jonpitch.razberry.devices;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Parcel;
-
-import com.google.gson.Gson;
 import com.jonpitch.razberry.api.RazberryApi;
 import com.jonpitch.razberry.api.RazberryService;
+
+import org.parceler.Parcel;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+@Parcel
 public class BinarySwitch extends Device {
+
+    public BinarySwitch() { }
 
     public BinarySwitch(int id, String name, boolean isOn, int level) {
         super(id, name, isOn, level);
@@ -20,9 +22,6 @@ public class BinarySwitch extends Device {
         setName(name);
         setIsOn(isOn);
         setLevel(isOn ? 100 : 0);
-
-        Gson gson = new Gson();
-        mSerializedDevice = gson.toJson(this);
     }
 
     public void on(Context context, Callback<Void> callback) {
@@ -69,33 +68,5 @@ public class BinarySwitch extends Device {
                     });
             return null;
         }
-    }
-
-    // parcelable
-
-    public static final Creator<BinarySwitch> CREATOR = new Creator<BinarySwitch>() {
-
-        @Override
-        public BinarySwitch createFromParcel(Parcel parcel) {
-            return new BinarySwitch(parcel);
-        }
-
-        @Override
-        public BinarySwitch[] newArray(int size) {
-            return new BinarySwitch[size];
-        }
-    };
-
-    public int describeContents() {
-        return 0;
-    }
-
-    public void writeToParcel(Parcel out, int flags) {
-        super.writeToParcel(out, flags);
-        out.writeString(mSerializedDevice);
-    }
-
-    private BinarySwitch(Parcel in) {
-        super(in);
     }
 }

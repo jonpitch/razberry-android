@@ -12,7 +12,8 @@
         android:id="@+id/devices_container"
         android:name="com.jonpitch.razberry.ui.device.DevicesFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
         android:scrollbars="vertical"
         tools:context="com.jonpitch.razberry.ui.device.DevicesFragment"
         tools:layout="@android:layout/list_content" />

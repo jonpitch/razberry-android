@@ -1,16 +1,18 @@
 package com.jonpitch.razberry.devices;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.content.Context;
 
-import com.google.gson.Gson;
+import org.parceler.Parcel;
 
-public abstract class Device implements IDevice, Parcelable {
+import retrofit.Callback;
 
-    protected int id;
-    protected String name;
-    protected boolean isOn;
-    protected int level;
+@Parcel
+public class Device implements IDevice {
+
+    int id;
+    String name;
+    boolean isOn;
+    int level;
 
     public int getId() {
         return this.id;
@@ -36,34 +38,23 @@ public abstract class Device implements IDevice, Parcelable {
         return this.level;
     }
 
-    //
+    // required
+    public Device() { }
 
-    protected String mSerializedDevice;
-
-    protected Device(int id, String name, boolean isOn, int level) {
+    public Device(int id, String name, boolean isOn, int level) {
         this.id = id;
         this.name = name;
         this.isOn = isOn;
         this.level = level;
-
-        Gson gson = new Gson();
-        mSerializedDevice = gson.toJson(this);
     }
 
-    protected Device(Parcel source) {
-        mSerializedDevice = source.readString();
+    @Override
+    public void on(Context context, Callback<Void> callback) {
 
-        // get the basics
-        Gson gson = new Gson();
-        Device d = gson.fromJson(mSerializedDevice, Device.class);
-        this.setId(d.getId());
-        this.setName(d.getName());
-        this.setIsOn(d.getIsOn());
-        this.setLevel(d.getLevel());
     }
 
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mSerializedDevice);
-    }
+    @Override
+    public void off(Context context, Callback<Void> callback) {
 
+    }
 }
