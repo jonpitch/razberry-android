@@ -1,33 +1,28 @@
 package com.jonpitch.razberry;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
-public class DevicesActivity extends ActionBarActivity {
+import com.jonpitch.razberry.api.response.DevicesResponse;
+import com.jonpitch.razberry.ui.BaseActivity;
+import com.jonpitch.razberry.ui.device.DevicesFragment;
+
+public class DevicesActivity extends BaseActivity implements DevicesFragment.DevicesCallback {
+
+    // The underlying model - devices found on host
+    public DevicesResponse model;
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_devices;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_devices);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_devices, menu);
-        return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void onDevicesFound(DevicesResponse response) {
+        model = response;
     }
 }

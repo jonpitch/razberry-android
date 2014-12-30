@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    style="@style/CardView"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_device"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="@dimen/card_corner_radius"
+    card_view:cardElevation="@dimen/card_elevation">
+
+    <!-- card container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/keyline"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/deviceName"
+            style="@style/CardTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Device Name" />
+
+        <TextView
+            android:id="@+id/deviceLevel"
+            style="@style/CardSubTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="level" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,8 +1,30 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme.Base" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/colorTextIcons</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+    </style>
+
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CardListView">
+        <item name="android:padding">@dimen/horizontal_spacer</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="CardTitle">
+        <item name="android:textSize">24dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="CardSubTitle">
+        <item name="android:textSize">14dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
 </resources>
